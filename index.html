@@ -34,6 +34,21 @@
         color: #333;
         word-wrap: break-word;
         max-width: 300px;
+        margin: 20px 0;
+        min-height: 24px;
+      }
+      #copyButton {
+        padding: 10px 20px;
+        background-color: #4caf50;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+        transition: background-color 0.3s;
+      }
+      #copyButton:hover {
+        background-color: #45a049;
       }
     </style>
   </head>
@@ -47,6 +62,7 @@
         oninput="reverseText()"
       />
       <div id="output"></div>
+      <button id="copyButton" onclick="copyText()">Copy</button>
     </div>
 
     <script>
@@ -54,6 +70,31 @@
         const input = document.getElementById("inputText").value;
         const reversed = input.split("").reverse().join("");
         document.getElementById("output").textContent = reversed;
+      }
+
+      function copyText() {
+        const outputText = document.getElementById("output").textContent;
+
+        // Check if output is empty
+        if (!outputText.trim()) {
+          alert("Nothing to copy! Please enter some text first.");
+          return; // Exit the function early
+        }
+
+        navigator.clipboard
+          .writeText(outputText)
+          .then(() => {
+            // Show feedback
+            const button = document.getElementById("copyButton");
+            button.textContent = "Copied!";
+            setTimeout(() => {
+              button.textContent = "Copy";
+            }, 2000);
+          })
+          .catch((err) => {
+            console.error("Failed to copy:", err);
+            alert("Failed to copy text. Please try again.");
+          });
       }
     </script>
   </body>
