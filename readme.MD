@@ -1,6 +1,7 @@
 # 🔃 Reverse Text Generator
 
 A simple web tool that instantly reverses any text you type. Perfect for creating secret messages, fun social media posts, or just playing with words!
+[![Live Demo](https://img.shields.io/badge/Visit_Live_Website-2088FF?style=for-the-badge&logo=github&logoColor=white)](https://orin-pal.github.io/reversed-text/){:target="\_blank"}
 
 ## 🌟 Features
 
